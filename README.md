@@ -1,17 +1,11 @@
-# Marlon Zometa — Landing Page
+# Marlon Zometa — Landing page oficial
 
-Landing page personal de Marlon Zometa, creador de contenido, autor y desarrollador.
+Landing page personal de Marlon Zometa, creador de contenido, autor y desarrollador salvadoreño.
 
-## Sitio
+## Sitio publicado
 
-- Página oficial: https://www.marlonzometa.com/
-- GitHub Pages: https://marlonzometa.github.io/marlonzometa/
+https://marlonzometa.github.io/marlonzometa/
 
-## Características
+## Sitio principal
 
-- Diseño profesional y adaptable a computadoras, tabletas y celulares
-- Animaciones suaves y accesibles
-- Optimización básica para buscadores y redes sociales
-- Navegación móvil
-- Enlaces directos al sitio oficial
-- Sin dependencias: HTML, CSS y JavaScript en un solo archivo
+https://www.marlonzometa.com/
