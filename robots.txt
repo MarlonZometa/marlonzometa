@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marlonzometa.github.io/marlonzometa/sitemap.xml
