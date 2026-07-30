@@ -33,7 +33,7 @@ const typeLabels=['CREATIVIDAD','TECNOLOGÍA','ESCRITURA','EDUCACIÓN','DESARROL
 const typedWord=$('#typed-word');
 let typeWordIndex=0,typeCharIndex=typeWords[0].length,typeDeleting=true,typeTimer;
 function runTypewriter(){
-  if(reduced||!typedWord){if(typedWord) typedWord.textContent=typeWords[0];return}
+  if(!typedWord) return;
   const word=typeWords[typeWordIndex];
   if(!typeDeleting){
     typeCharIndex++;
@@ -57,7 +57,7 @@ function runTypewriter(){
     typeTimer=setTimeout(runTypewriter,58);
   }
 }
-if(!reduced) typeTimer=setTimeout(runTypewriter,1650);
+typeTimer=setTimeout(runTypewriter,1650);
 
 $$('.planet').forEach(planet=>{
   const activate=()=>{
