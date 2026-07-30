@@ -31,7 +31,7 @@ $$('.process-step').forEach(el=>processObserver.observe(el));
 const typeWords=['Ideas','Tecnología','Historias','Aprendizaje','Soluciones'];
 const typeLabels=['CREATIVIDAD','TECNOLOGÍA','ESCRITURA','EDUCACIÓN','DESARROLLO'];
 const typedWord=$('#typed-word');
-let typeWordIndex=0,typeCharIndex=typeWords[0].length,typeDeleting=false,typeTimer;
+let typeWordIndex=0,typeCharIndex=typeWords[0].length,typeDeleting=true,typeTimer;
 function runTypewriter(){
   if(reduced||!typedWord){if(typedWord) typedWord.textContent=typeWords[0];return}
   const word=typeWords[typeWordIndex];
