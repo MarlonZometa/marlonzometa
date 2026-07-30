@@ -175,3 +175,74 @@
 @media(prefers-reduced-motion:reduce){
   .core:before,.core:after,.satellite,.r3,.creative-console:after,.changing-word span.active{animation:none!important}
 }
+
+/* Correct orbital dots and five-word typewriter */
+.core .satellite,.core:before,.core:after{display:none!important}
+.dot-orbit{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:50%;
+  width:var(--orbit-size);
+  height:var(--orbit-size);
+  margin:calc(var(--orbit-size) / -2);
+  border-radius:50%;
+  pointer-events:none;
+  animation:dotOrbitSpin var(--orbit-speed) linear infinite;
+}
+.dot-orbit i{
+  position:absolute;
+  left:50%;
+  top:-5px;
+  width:10px;
+  height:10px;
+  margin-left:-5px;
+  border-radius:50%;
+  background:var(--dot-color);
+  box-shadow:0 0 7px var(--dot-color),0 0 20px var(--dot-color);
+}
+.orbit-a{--orbit-size:190px;--orbit-speed:6.8s;--dot-color:var(--electric)}
+.orbit-b{--orbit-size:142px;--orbit-speed:9.4s;--dot-color:var(--orange);animation-direction:reverse}
+.orbit-c{--orbit-size:94px;--orbit-speed:5.3s;--dot-color:#8aa8ff}
+.orbit-c i{width:7px;height:7px;top:-3.5px;margin-left:-3.5px}
+.typewriter{
+  min-width:min(100%,430px);
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  overflow:visible;
+}
+.typewriter #typed-word{
+  position:static;
+  display:inline-block;
+  width:auto;
+  opacity:1;
+  filter:none;
+  transform:none;
+  color:#fff;
+  font-size:clamp(2.35rem,4vw,4rem);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-.065em;
+  text-align:center;
+  text-shadow:0 0 26px rgba(125,249,255,.18);
+}
+.typing-cursor{
+  width:3px;
+  height:clamp(34px,4vw,53px);
+  border-radius:4px;
+  background:var(--electric);
+  box-shadow:0 0 14px rgba(125,249,255,.75);
+  animation:typingBlink .78s steps(1,end) infinite;
+}
+@keyframes dotOrbitSpin{to{transform:rotate(360deg)}}
+@keyframes typingBlink{0%,48%{opacity:1}49%,100%{opacity:0}}
+@media(max-width:500px){
+  .orbit-a{--orbit-size:160px}.orbit-b{--orbit-size:120px}.orbit-c{--orbit-size:80px}
+  .typewriter #typed-word{font-size:clamp(2rem,11vw,2.75rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  .dot-orbit,.typing-cursor{animation:none!important}
+}
