@@ -28,13 +28,13 @@ const processObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
 }),{rootMargin:'-35% 0px -45%',threshold:.1});
 $$('.process-step').forEach(el=>processObserver.observe(el));
 
-const words=$$('.changing-word span'), labels=['CREATIVIDAD','INTELIGENCIA ARTIFICIAL','ESCRITURA','EDUCACIÓN','DESARROLLO']; let wordIndex=0;
+const words=$('.changing-word span'), labels=['CREATIVIDAD','INTELIGENCIA ARTIFICIAL','ESCRITURA','EDUCACIÓN','DESARROLLO','INNOVACIÓN','PROPÓSITO','CONOCIMIENTO','EXPERIENCIAS']; let wordIndex=0;
 if(!reduced) setInterval(()=>{
   words[wordIndex].classList.remove('active');
   wordIndex=(wordIndex+1)%words.length;
   words[wordIndex].classList.add('active');
   $('#focus-label').textContent=labels[wordIndex];
-},2100);
+},2400);
 
 $$('.planet').forEach(planet=>{
   const activate=()=>{
