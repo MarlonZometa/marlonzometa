@@ -248,3 +248,51 @@
   .dot-orbit{animation-duration:14s!important}
   .typing-cursor{animation-duration:1.05s!important}
 }
+
+
+/* Continuous hero orbit + unclipped editorial title */
+.hero-title .title-line:nth-child(2){
+  overflow:visible;
+  padding-right:.34em;
+  padding-bottom:.2em;
+}
+.hero-title .title-line:nth-child(2)>span{overflow:visible}
+.hero-title em{
+  display:inline-block;
+  margin-left:.035em;
+  padding:.02em .2em .12em .035em;
+  line-height:.9;
+  vertical-align:-.025em;
+}
+.dot-orbit,
+.core-ring{
+  animation-iteration-count:infinite!important;
+  animation-timing-function:linear!important;
+  animation-play-state:running!important;
+  will-change:transform;
+}
+@media(prefers-reduced-motion:reduce){
+  .dot-orbit{
+    animation-name:dotOrbitSpin!important;
+    animation-duration:14s!important;
+    animation-iteration-count:infinite!important;
+    animation-timing-function:linear!important;
+    animation-play-state:running!important;
+  }
+  .core-ring.r1{
+    animation-name:spin!important;
+    animation-duration:24s!important;
+    animation-iteration-count:infinite!important;
+    animation-timing-function:linear!important;
+  }
+  .core-ring.r2{
+    animation-name:spin!important;
+    animation-duration:18s!important;
+    animation-iteration-count:infinite!important;
+    animation-direction:reverse!important;
+    animation-timing-function:linear!important;
+  }
+}
+@media(max-width:780px){
+  .hero-title .title-line:nth-child(2){padding-right:.26em}
+}
