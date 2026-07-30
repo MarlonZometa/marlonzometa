@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marlonzometa.github.io/marlonzometa/sitemap.xml
+# La autoridad principal se declara mediante canonical:
+# https://www.marlonzometa.com/
