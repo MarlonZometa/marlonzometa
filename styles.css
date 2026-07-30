@@ -243,6 +243,8 @@
   .orbit-a{--orbit-size:160px}.orbit-b{--orbit-size:120px}.orbit-c{--orbit-size:80px}
   .typewriter #typed-word{font-size:clamp(2rem,11vw,2.75rem)}
 }
+/* Estas dos animaciones comunican contenido y permanecen activas incluso si el sistema reduce efectos decorativos. */
 @media(prefers-reduced-motion:reduce){
-  .dot-orbit,.typing-cursor{animation:none!important}
+  .dot-orbit{animation-duration:14s!important}
+  .typing-cursor{animation-duration:1.05s!important}
 }
