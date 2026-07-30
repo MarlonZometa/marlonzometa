@@ -85,3 +85,36 @@ if(!reduced && matchMedia('(pointer:fine)').matches){
   }
   resize();addEventListener('resize',resize);draw();
 }
+
+
+// Automatic universe tour: keeps the central panel alive on desktop and touch screens.
+const universePlanets=$$('.planet');
+let universeIndex=Math.max(0,universePlanets.findIndex(p=>p.classList.contains('active')));
+let universeTimer;
+function showUniversePlanet(planet){
+  if(!planet) return;
+  universePlanets.forEach(p=>p.classList.remove('active'));
+  planet.classList.add('active');
+  const title=$('#scene-title'), copy=$('#scene-copy');
+  if(title.animate && !reduced){
+    title.animate([{opacity:0,transform:'translateY(12px) scale(.96)',filter:'blur(6px)'},{opacity:1,transform:'none',filter:'none'}],{duration:520,easing:'cubic-bezier(.16,1,.3,1)'});
+    copy.animate([{opacity:0,transform:'translateY(7px)'},{opacity:1,transform:'none'}],{duration:540,easing:'cubic-bezier(.16,1,.3,1)'});
+  }
+  title.textContent=planet.dataset.scene;
+  copy.textContent=planet.dataset.copy;
+}
+function startUniverseTour(){
+  clearInterval(universeTimer);
+  if(reduced || universePlanets.length<2) return;
+  universeTimer=setInterval(()=>{
+    universeIndex=(universeIndex+1)%universePlanets.length;
+    showUniversePlanet(universePlanets[universeIndex]);
+  },4200);
+}
+universePlanets.forEach((planet,index)=>{
+  ['click','focus','mouseenter'].forEach(eventName=>planet.addEventListener(eventName,()=>{
+    universeIndex=index;showUniversePlanet(planet);startUniverseTour();
+  }));
+});
+document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(universeTimer):startUniverseTour());
+startUniverseTour();
