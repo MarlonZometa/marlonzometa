@@ -28,13 +28,36 @@ const processObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
 }),{rootMargin:'-35% 0px -45%',threshold:.1});
 $$('.process-step').forEach(el=>processObserver.observe(el));
 
-const words=$('.changing-word span'), labels=['CREATIVIDAD','INTELIGENCIA ARTIFICIAL','ESCRITURA','EDUCACIÓN','DESARROLLO','INNOVACIÓN','PROPÓSITO','CONOCIMIENTO','EXPERIENCIAS']; let wordIndex=0;
-if(!reduced) setInterval(()=>{
-  words[wordIndex].classList.remove('active');
-  wordIndex=(wordIndex+1)%words.length;
-  words[wordIndex].classList.add('active');
-  $('#focus-label').textContent=labels[wordIndex];
-},2400);
+const typeWords=['Ideas','Tecnología','Historias','Aprendizaje','Soluciones'];
+const typeLabels=['CREATIVIDAD','TECNOLOGÍA','ESCRITURA','EDUCACIÓN','DESARROLLO'];
+const typedWord=$('#typed-word');
+let typeWordIndex=0,typeCharIndex=typeWords[0].length,typeDeleting=false,typeTimer;
+function runTypewriter(){
+  if(reduced||!typedWord){if(typedWord) typedWord.textContent=typeWords[0];return}
+  const word=typeWords[typeWordIndex];
+  if(!typeDeleting){
+    typeCharIndex++;
+    typedWord.textContent=word.slice(0,typeCharIndex);
+    if(typeCharIndex===word.length){
+      $('#focus-label').textContent=typeLabels[typeWordIndex];
+      typeDeleting=true;
+      typeTimer=setTimeout(runTypewriter,1650);
+      return;
+    }
+    typeTimer=setTimeout(runTypewriter,95);
+  }else{
+    typeCharIndex--;
+    typedWord.textContent=word.slice(0,typeCharIndex);
+    if(typeCharIndex===0){
+      typeDeleting=false;
+      typeWordIndex=(typeWordIndex+1)%typeWords.length;
+      typeTimer=setTimeout(runTypewriter,320);
+      return;
+    }
+    typeTimer=setTimeout(runTypewriter,58);
+  }
+}
+if(!reduced) typeTimer=setTimeout(runTypewriter,1650);
 
 $$('.planet').forEach(planet=>{
   const activate=()=>{
